@@ -19,14 +19,14 @@ namespace LiteDbApp
             {
                 var tests = db.GetCollection("test");
 
-                tests.Upsert(new BsonDocument { ["_id"] = 1, ["Name"] = $"Hello World {DateTime.Now:yyyy-MM-dd HH:mm:ss}" });
+                tests.Upsert(new BsonDocument { ["_id"] = "Certificate", ["Name"] = $"Hello World {DateTime.Now:yyyy-MM-dd HH:mm:ss}" });
             }
 
             using (var db = new LiteDatabase(litedbConnectionString))
             {
                 var tests = db.GetCollection("test");
 
-                this.MainPageViewModel.Message = tests.FindById(1)["Name"];
+                this.MainPageViewModel.Message = tests.FindById("Certificate")["Name"];
             }
         }
 
